@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Tic Tac Toe</title>
+    <script type="text/javascript">
+      var count=1;
+      function play(control){
+
+         if(count<=9){
+           if(count%2!=0){
+             document.getElementById(control.id).innerHTML="X";
+           }else{
+             document.getElementById(control.id).innerHTML="O";
+           }
+
+           count++;
+           if(win())
+           {
+               alert("winner");
+               reset();
+           }
+         }
+         else
+         {
+             alert("Draw");
+             reset();
+         }
+      }
+
+      function reset(){
+        for(var i=1;i<=9;i++){
+          document.getElementById("div"+i).innerHTML="";
+        }
+          count=1;
+      }
+
+      function win(){
+          if(getdata("div1","div2","div3")|| getdata("div4","div5","div6")|| getdata("div7","div8","div9")|| getdata("div1","div4","div7")||getdata("div2","div5","div8")|| getdata("div3","div6","div9")|| getdata("div1","div5","div9")|| getdata("div3","div5","div7")){
+            return true;
+          }
+
+      }
+
+      function getdata(div1,div2,div3){
+        if(document.getElementById(div1).innerHTML!="" && document.getElementById(div2).innerHTML!="" &&
+        document.getElementById(div3).innerHTML!="" && document.getElementById(div1).innerHTML==document.getElementById(div2).innerHTML &&
+        document.getElementById(div2).innerHTML==document.getElementById(div3).innerHTML){
+          return true;
+        }
+      }
+
+    </script>
+    <style type="text/css">
+      body{
+        background-color:green;
+      }
+      #main h1{
+        text-align:center;
+        margin-left:130px;
+        text-align:left;
+        font-size:50px;
+      }
+      #main{
+      margin-left: 400px;
+      margin-top:50px;
+       color:white;
+      }
+      #div1,#div2,#div3,#div4,#div5,#div6,#div7,#div8,#div9{
+        border:1px solid black;
+        width:200px;
+        height:200px;
+        float:left;
+        font-size: 150px ;
+        text-align:center;
+
+      }
+
+      #div1,#div4,#div7{
+        clear:left;
+      }
+
+      #div1,#div2,#div3{
+        border-top:none;
+      }
+
+      #div1,#div4,#div7{
+        border-left:none;
+      }
+
+      #div3,#div6,#div9{
+        border-right:none;
+      }
+
+      #div7,#div8,#div9{
+        border-bottom:none;
+      }
+
+    </style>
+  </head>
+  <body>
+    <div id="main">
+      <h1>Play tic tac toe </h1>
+     <div id="div1" onclick="play(this)" ></div>
+     <div id="div2" onclick="play(this)"></div>
+     <div id="div3" onclick="play(this)"></div>
+     <div id="div4" onclick="play(this)"></div>
+     <div id="div5" onclick="play(this)"></div>
+     <div id="div6" onclick="play(this)"></div>
+     <div id="div7" onclick="play(this)"></div>
+     <div id="div8" onclick="play(this)"></div>
+     <div id="div9" onclick="play(this)"></div>
+    </div>
+  </body>
+</html>
